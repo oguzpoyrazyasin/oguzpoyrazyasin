@@ -33,7 +33,7 @@ class ScannerTests(unittest.TestCase):
   key=normalize(high,self.cfg,self.now.date())["key"]
   state["history"][key]={"prices":[{"day":(self.now.date()-timedelta(days=i)).isoformat(),"price":7500} for i in (3,2,1)],
                          "last_seen":self.now.date().isoformat()}
-  self.assertEqual(len(evaluate({**high,"price":4500} if False else [{**high,"price":4500}],state,self.cfg,self.now)),1)
+  self.assertEqual(len(evaluate([{**high,"price":4500}],state,self.cfg,self.now)),1)
  def test_month_boundary(self):
   self.assertEqual(months(date(2026,12,15),date(2027,2,3)),["2026-12","2027-01","2027-02"])
 
